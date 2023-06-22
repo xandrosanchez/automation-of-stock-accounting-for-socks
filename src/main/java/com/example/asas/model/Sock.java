@@ -1,6 +1,15 @@
 package com.example.asas.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Sock {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String color;
     private int cottonPart;
     private int quantity;
@@ -36,5 +45,13 @@ public class Sock {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
