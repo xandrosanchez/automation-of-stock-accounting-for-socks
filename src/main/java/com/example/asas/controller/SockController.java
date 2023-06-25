@@ -17,8 +17,11 @@ import javax.validation.Valid;
 @RequestMapping("/api/socks")
 @Validated
 public class SockController {
-    @Autowired
-    private SockService sockService;
+    private final SockService sockService;
+
+    public SockController(SockService sockService) {
+        this.sockService = sockService;
+    }
 
     @Operation(summary = "Регистрирует поступление носков")
     @PostMapping("/income")
