@@ -5,16 +5,20 @@ import com.example.asas.model.Sock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/socks")
+@Validated
 public class SockController {
     @Autowired
     private SockService sockService;
 
     @PostMapping("/income")
-    public ResponseEntity<Void> registerIncome(@RequestBody Sock sock) {
+    public ResponseEntity<Void> registerIncome(@Valid @RequestBody Sock sock) {
         try {
             sockService.incomeSock(sock.getColor(), sock.getCottonPart(), sock.getQuantity());
             return ResponseEntity.ok().build();
@@ -26,7 +30,7 @@ public class SockController {
     }
 
     @PostMapping("/outcome")
-    public ResponseEntity<Void> registerOutcome(@RequestBody Sock sock) {
+    public ResponseEntity<Void> registerOutcome(@Valid @RequestBody Sock sock) {
         try {
             sockService.outcomeSock(sock.getColor(), sock.getCottonPart(), sock.getQuantity());
             return ResponseEntity.ok().build();
