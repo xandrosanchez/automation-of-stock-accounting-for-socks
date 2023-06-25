@@ -1,11 +1,9 @@
 package com.example.asas.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.Size;
-import org.hibernate.validator.constraints.Range;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Sock {
@@ -13,9 +11,7 @@ public class Sock {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String color;
-    @Range(min = 0,max = 100)
     private int cottonPart;
-    @Range(min = 0)
     private int quantity;
 
     public Sock() {

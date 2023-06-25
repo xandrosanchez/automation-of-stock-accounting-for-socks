@@ -41,12 +41,13 @@ public class SockService {
 
     public int getTotalQuantity(String color, String operation, int cottonPart) {
         return switch (operation) {
-            case "moreThan" -> sockRepository.countByColorIgnoreCaseAndCottonPartGreaterThan(color, cottonPart);
-            case "lessThan" -> sockRepository.countByColorIgnoreCaseAndCottonPartLessThan(color, cottonPart);
-            case "equal" -> sockRepository.countByColorIgnoreCaseAndCottonPartEquals(color, cottonPart);
+            case "moreThan" -> sockRepository.sumQuantityByColorIgnoreCaseAndCottonPartGreaterThan(color, cottonPart);
+            case "lessThan" -> sockRepository.sumQuantityByColorIgnoreCaseAndCottonPartLessThan(color, cottonPart);
+            case "equal" -> sockRepository.sumQuantityByColorIgnoreCaseAndCottonPartEquals(color, cottonPart);
             default -> throw new IllegalArgumentException("Invalid operation: " + operation);
         };
     }
+
 
     private Sock checkingForSocks(String color, int cottonPart) {
         Collection<Sock> socks = sockRepository.findSockByColorIgnoreCaseAndCottonPart(color, cottonPart);
